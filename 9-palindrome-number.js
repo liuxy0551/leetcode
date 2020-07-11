@@ -40,3 +40,26 @@ console.log(isPalindrome(12321))
 console.log(isPalindrome(-121))
 console.log(isPalindrome(0))
 console.log(isPalindrome(10))
+
+
+
+// 题解
+function isPalindrome1 (num) {
+  // 当 num < 0 时，num 不是回文数，同样的，如果数字最后一位是0，为了使 num 回文，num 第一位也需要为 0，则 0 是回文数
+  if (num < 0 || num % 10 === 0 && num !== 0) {
+    return false
+  }
+
+  let revertedNum = 0
+  while (num > revertedNum) {
+    revertedNum = revertedNum * 10 + num % 10
+    num = Math.floor(num / 10)
+  }
+
+  return num === revertedNum || num === Math.floor(revertedNum / 10)
+}
+
+console.log(isPalindrome1(12321))
+console.log(isPalindrome1(-121))
+console.log(isPalindrome1(0))
+console.log(isPalindrome1(10))
